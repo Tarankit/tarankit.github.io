@@ -88,6 +88,16 @@ nav ul a:hover::after{width:100%}
 .hero .scroll-hint span{width:1px;height:44px;background:linear-gradient(180deg,var(--accent),transparent);animation:drip 1.8s ease-in-out infinite}
 @keyframes drip{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:640px){
+  .hero{min-height:auto;padding-top:104px;padding-bottom:56px;justify-content:flex-start}
+  .hero .kicker{font-size:.68rem;letter-spacing:.14em;margin-bottom:16px}
+  .hero .kicker::before{width:26px}
+  .hero h1{font-size:2.3rem}
+  .hero .sub{margin-top:20px;font-size:.95rem}
+  .hero .cta{margin-top:34px}
+  .hero .cta .btn{width:100%;justify-content:center}
+  .hero .scroll-hint{display:none}
+}
 
 /* ── sections ── */
 section{padding:clamp(70px,10vw,130px) clamp(20px,7vw,110px);max-width:1280px;margin:0 auto}
