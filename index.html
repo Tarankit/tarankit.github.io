@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarankit Chadha — Senior Software Engineer</title>
+<meta name="description" content="Tarankit Chadha — Senior Software Engineer. Full-stack .NET, Angular & Azure. Government API integrations, LLM-powered features, enterprise SaaS.">
+<meta property="og:title" content="Tarankit Chadha — Senior Software Engineer">
+<meta property="og:description" content="Full-stack .NET / Angular / Azure engineer. Government API integrations, LLM-powered product features, enterprise SaaS.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='80' font-size='80'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05070d;
+  --bg2:#0a0e1a;
+  --panel:rgba(18,24,42,.55);
+  --border:rgba(120,150,255,.14);
+  --border-hi:rgba(120,150,255,.4);
+  --text:#e8ecf8;
+  --muted:#8b94ad;
+  --accent:#5b8cff;
+  --accent2:#8f6fff;
+  --accent3:#39d4c3;
+  --glow:rgba(91,140,255,.45);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',system-ui,sans-serif;
+  overflow-x:hidden;
+  line-height:1.6;
+}
+::selection{background:rgba(91,140,255,.35)}
+h1,h2,h3,.sg{font-family:'Space Grotesk',sans-serif}
+.mono{font-family:'JetBrains Mono',monospace}
+a{color:inherit;text-decoration:none}
+canvas#bg{position:fixed;inset:0;z-index:0;display:block}
+.veil{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse 90% 60% at 50% -10%,rgba(91,140,255,.10),transparent 60%),
+             linear-gradient(180deg,transparent 0%,rgba(5,7,13,.25) 70%,rgba(5,7,13,.7) 100%);}
+main{position:relative;z-index:2}
+
+/* ── loader ── */
+#loader{position:fixed;inset:0;z-index:50;background:var(--bg);display:flex;flex-direction:column;gap:18px;align-items:center;justify-content:center;transition:opacity .7s ease,visibility .7s}
+#loader.done{opacity:0;visibility:hidden}
+#loader .lg{font-family:'Space Grotesk';font-size:1.6rem;letter-spacing:.35em;color:var(--muted);animation:pulse 1.4s ease-in-out infinite}
+#loader .bar{width:180px;height:2px;background:rgba(120,150,255,.15);border-radius:2px;overflow:hidden}
+#loader .bar i{display:block;height:100%;width:40%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;animation:slide 1.1s ease-in-out infinite}
+@keyframes slide{0%{transform:translateX(-100%)}100%{transform:translateX(450%)}}
+@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+
+/* ── scroll progress ── */
+#progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:40;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));box-shadow:0 0 12px var(--glow)}
+
+/* ── nav ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;justify-content:space-between;align-items:center;
+  padding:18px clamp(20px,5vw,64px);transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(5,7,13,.72);backdrop-filter:blur(14px);border-bottom-color:var(--border)}
+nav .logo{font-family:'Space Grotesk';font-weight:700;font-size:1.05rem;letter-spacing:.12em}
+nav .logo b{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+nav ul{display:flex;gap:clamp(14px,2.5vw,34px);list-style:none}
+nav ul a{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:color .25s;position:relative}
+nav ul a:hover{color:var(--text)}
+nav ul a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .3s}
+nav ul a:hover::after{width:100%}
+@media(max-width:640px){nav ul{display:none}}
+
+/* ── hero ── */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:0 clamp(20px,7vw,110px);position:relative}
+.hero .kicker{display:flex;align-items:center;gap:12px;color:var(--accent3);font-family:'JetBrains Mono';font-size:.85rem;letter-spacing:.18em;margin-bottom:22px;opacity:0;animation:rise .9s .2s forwards}
+.hero .kicker::before{content:"";width:44px;height:1px;background:var(--accent3);opacity:.7}
+.hero h1{font-size:clamp(2.6rem,7.5vw,5.6rem);font-weight:700;line-height:1.04;letter-spacing:-.02em;opacity:0;animation:rise .9s .35s forwards}
+.hero h1 .grad{background:linear-gradient(92deg,#dfe7ff 0%,var(--accent) 45%,var(--accent2) 80%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{margin-top:26px;max-width:640px;color:var(--muted);font-size:clamp(1rem,1.4vw,1.15rem);font-weight:300;opacity:0;animation:rise .9s .5s forwards}
+.hero .sub b{color:var(--text);font-weight:500}
+.hero .cta{display:flex;flex-wrap:wrap;gap:16px;margin-top:44px;opacity:0;animation:rise .9s .65s forwards}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 30px;border-radius:999px;font-size:.92rem;font-weight:500;letter-spacing:.04em;transition:transform .25s,box-shadow .25s,background .25s;cursor:pointer;border:1px solid transparent}
+.btn-primary{background:linear-gradient(92deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 8px 30px -8px var(--glow)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 44px -8px var(--glow)}
+.btn-ghost{border-color:var(--border-hi);color:var(--text);background:rgba(120,150,255,.05);backdrop-filter:blur(6px)}
+.btn-ghost:hover{transform:translateY(-3px);background:rgba(120,150,255,.12)}
+.hero .scroll-hint{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);color:var(--muted);font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;animation:rise 1s 1.2s forwards}
+.hero .scroll-hint span{width:1px;height:44px;background:linear-gradient(180deg,var(--accent),transparent);animation:drip 1.8s ease-in-out infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── sections ── */
+section{padding:clamp(70px,10vw,130px) clamp(20px,7vw,110px);max-width:1280px;margin:0 auto}
+.sec-head{margin-bottom:clamp(36px,5vw,64px)}
+.sec-head .idx{font-family:'JetBrains Mono';color:var(--accent3);font-size:.85rem;letter-spacing:.2em}
+.sec-head h2{font-size:clamp(1.9rem,4vw,3rem);font-weight:700;letter-spacing:-.01em;margin-top:10px}
+.sec-head h2 em{font-style:normal;background:linear-gradient(92deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ── stats ── */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}
+.stat{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:30px 26px;backdrop-filter:blur(10px);transition:transform .3s,border-color .3s}
+.stat:hover{transform:translateY(-5px);border-color:var(--border-hi)}
+.stat .num{font-family:'Space Grotesk';font-size:2.5rem;font-weight:700;background:linear-gradient(92deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .lbl{color:var(--muted);font-size:.85rem;margin-top:6px;letter-spacing:.04em}
+
+/* ── timeline ── */
+.timeline{position:relative;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:1px;background:linear-gradient(180deg,var(--accent),var(--accent2),transparent)}
+.tl-item{position:relative;margin-bottom:54px}
+.tl-item::before{content:"";position:absolute;left:-30px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(91,140,255,.18),0 0 18px var(--glow)}
+.tl-item .when{font-family:'JetBrains Mono';font-size:.8rem;color:var(--accent3);letter-spacing:.12em}
+.tl-item h3{font-size:1.35rem;margin:8px 0 2px}
+.tl-item .org{color:var(--muted);font-size:.95rem;margin-bottom:14px}
+.tl-item .org b{color:var(--text);font-weight:500}
+.tl-item ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.tl-item ul li{color:var(--muted);font-size:.95rem;font-weight:300;padding-left:22px;position:relative}
+.tl-item ul li::before{content:"▹";position:absolute;left:0;color:var(--accent)}
+.tl-item ul li b{color:var(--text);font-weight:500}
+
+/* ── work cards ── */
+.work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:22px}
+.card{position:relative;background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:34px 30px;backdrop-filter:blur(10px);overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.3,1),border-color .35s,box-shadow .35s}
+.card:hover{transform:translateY(-7px);border-color:var(--border-hi);box-shadow:0 24px 60px -20px rgba(91,140,255,.3)}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(500px circle at var(--mx,50%) var(--my,50%),rgba(91,140,255,.13),transparent 45%);opacity:0;transition:opacity .35s;pointer-events:none}
+.card:hover::before{opacity:1}
+.card .glyph{font-size:1.7rem;width:56px;height:56px;display:flex;align-items:center;justify-content:center;border-radius:14px;background:linear-gradient(135deg,rgba(91,140,255,.18),rgba(143,111,255,.18));border:1px solid var(--border);margin-bottom:22px}
+.card h3{font-size:1.22rem;margin-bottom:10px}
+.card p{color:var(--muted);font-size:.93rem;font-weight:300;margin-bottom:20px}
+.card p b{color:var(--text);font-weight:500}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{font-family:'JetBrains Mono';font-size:.7rem;letter-spacing:.05em;color:var(--accent3);background:rgba(57,212,195,.08);border:1px solid rgba(57,212,195,.22);padding:4px 10px;border-radius:999px}
+
+/* ── skills ── */
+.skill-rows{display:flex;flex-direction:column;gap:26px}
+.skill-row{display:grid;grid-template-columns:180px 1fr;gap:18px;align-items:start;padding-bottom:24px;border-bottom:1px solid var(--border)}
+.skill-row:last-child{border-bottom:none}
+.skill-row .cat{font-family:'Space Grotesk';font-weight:600;font-size:.95rem;color:var(--text);letter-spacing:.03em;padding-top:5px}
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chips span{font-size:.83rem;color:var(--muted);background:rgba(120,150,255,.06);border:1px solid var(--border);padding:7px 15px;border-radius:999px;transition:all .25s;font-weight:300}
+.chips span:hover{color:var(--text);border-color:var(--border-hi);background:rgba(120,150,255,.13);transform:translateY(-2px)}
+.chips span.hot{color:#cdd9ff;border-color:rgba(91,140,255,.45);background:rgba(91,140,255,.13)}
+@media(max-width:640px){.skill-row{grid-template-columns:1fr;gap:10px}}
+
+/* ── education ── */
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:22px}
+
+/* ── contact ── */
+.contact-box{text-align:center;padding:clamp(50px,7vw,90px) clamp(24px,5vw,70px);background:var(--panel);border:1px solid var(--border);border-radius:28px;backdrop-filter:blur(10px);position:relative;overflow:hidden}
+.contact-box::before{content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:420px;height:240px;background:radial-gradient(ellipse,rgba(91,140,255,.22),transparent 70%);pointer-events:none}
+.contact-box h2{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:16px}
+.contact-box p{color:var(--muted);max-width:520px;margin:0 auto 36px;font-weight:300}
+.contact-links{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:30px}
+.clink{font-family:'JetBrains Mono';font-size:.82rem;color:var(--muted);display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid var(--border);border-radius:999px;transition:all .25s}
+.clink:hover{color:var(--text);border-color:var(--border-hi);transform:translateY(-2px)}
+
+footer{position:relative;z-index:2;text-align:center;padding:34px 20px;color:var(--muted);font-size:.78rem;border-top:1px solid var(--border);font-weight:300;letter-spacing:.05em}
+footer b{color:var(--text);font-weight:500}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+  .hero .kicker,.hero h1,.hero .sub,.hero .cta,.hero .scroll-hint{opacity:1}
+}
+</style>
+</head>
+<body>
+
+<div id="loader"><div class="lg">TC</div><div class="bar"><i></i></div></div>
+<div id="progress"></div>
+<canvas id="bg"></canvas>
+<div class="veil"></div>
+
+<nav id="nav">
+  <a class="logo" href="#top">TARANKIT<b>.</b></a>
+  <ul>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="Tarankit_Chadha_Resume.pdf" target="_blank" rel="noopener">Résumé ↓</a></li>
+  </ul>
+</nav>
+
+<main id="top">
+
+<header class="hero">
+  <div class="kicker">SENIOR SOFTWARE ENGINEER · FULL STACK</div>
+  <h1>Tarankit Chadha.<br><span class="grad">I build enterprise software<br>end-to-end.</span></h1>
+  <p class="sub">4+ years shipping production SaaS with <b>.NET, Angular &amp; Azure</b> — from
+  <b>government customs API integrations</b> in the Nordics to <b>LLM-powered product features</b>.
+  I own the whole journey: requirements, architecture, code, deploy, and the 2&nbsp;AM debugging.</p>
+  <div class="cta">
+    <a class="btn btn-primary" href="#work">Explore my work</a>
+    <a class="btn btn-ghost" href="Tarankit_Chadha_Resume.pdf" target="_blank" rel="noopener">Download résumé</a>
+    <a class="btn btn-ghost" href="https://www.linkedin.com/in/tarankit-chadha-09b6391ba/" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-5c0-2.76-2.24-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.27c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm13.5 12.27h-3v-5.6c0-3.37-4-3.11-4 0v5.6h-3v-11h3v1.77c1.4-2.59 7-2.78 7 2.47v6.76z"/></svg>
+      LinkedIn</a>
+  </div>
+  <div class="scroll-hint">scroll<span></span></div>
+</header>
+
+<section id="stats">
+  <div class="stats">
+    <div class="stat reveal"><div class="num" data-count="4" data-suffix="+">0</div><div class="lbl">Years building production software</div></div>
+    <div class="stat reveal"><div class="num" data-count="40" data-suffix="%">0</div><div class="lbl">Reduction in production bug reports</div></div>
+    <div class="stat reveal"><div class="num" data-count="30" data-suffix="%">0</div><div class="lbl">Faster app performance delivered</div></div>
+    <div class="stat reveal"><div class="num" data-count="100" data-suffix="+">0</div><div class="lbl">Components modernized platform-wide</div></div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="sec-head reveal"><div class="idx">01 / CAREER</div><h2>Where I've <em>shipped</em></h2></div>
+  <div class="timeline">
+    <div class="tl-item reveal">
+      <div class="when">DEC 2022 — PRESENT · REMOTE (SWEDEN)</div>
+      <h3>Software Engineer, Full Stack</h3>
+      <div class="org"><b>Gothia Digital Solutions AB</b> — multi-tenant customs-clearance SaaS for Nordic logistics brokers</div>
+      <ul>
+        <li><b>Own features end-to-end</b>: C#/.NET REST APIs in a microservice architecture, SQL Server + Cosmos DB, and the Angular frontend — requirements to production.</li>
+        <li>Built the platform's <b>Norwegian Customs (Digitoll) integration</b>: machine-to-machine OAuth 2.0 via Maskinporten, certificate-based JWT grants in Azure Key Vault, per-broker scopes across road, rail &amp; air.</li>
+        <li>Shipped <b>LLM-powered features</b>: an in-app AI assistant with a tool-use loop for tariff classification, plus AI-driven customer onboarding automation.</li>
+        <li>Hardened the invoice/PDF import pipeline with reference sanitization and a self-learning correction system.</li>
+        <li>Cut production bug reports by <b>~40%</b>; improved performance by <b>~30%</b>; led the px→rem UI-scaling migration across 100+ components.</li>
+      </ul>
+    </div>
+    <div class="tl-item reveal">
+      <div class="when">JUL 2022 — DEC 2022 · DELHI</div>
+      <h3>Frontend Developer, React</h3>
+      <div class="org"><b>CoffeeMug</b> — professional networking platform</div>
+      <ul>
+        <li>Built 20+ reusable React components and integrated REST APIs across the product.</li>
+        <li>Developed the "Recruit Plus" frontend with React Query — <b>~30% faster</b> data fetching.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="sec-head reveal"><div class="idx">02 / FEATURED WORK</div><h2>Things I'm <em>proud of</em></h2></div>
+  <div class="work-grid">
+    <div class="card reveal">
+      <div class="glyph">🛃</div>
+      <h3>Norwegian Customs · Digitoll Integration</h3>
+      <p>Government-grade API integration with Tolletaten. <b>Maskinporten OAuth 2.0</b> machine-to-machine auth with certificate-based JWT grants held in <b>Azure Key Vault</b>, coherent multi-broker identity, and scope management across road, rail &amp; air transport modes.</p>
+      <div class="tags"><span>.NET</span><span>OAuth 2.0</span><span>Azure Key Vault</span><span>Gov API</span></div>
+    </div>
+    <div class="card reveal">
+      <div class="glyph">🤖</div>
+      <h3>GDS AI — LLM Assistant in Production</h3>
+      <p>In-app AI assistant built on a <b>tool-use (function-calling) loop</b> — grounded tariff-code classification tools, context-aware answers, and graceful degradation. Plus <b>AI-driven onboarding automation</b> with status-aware, scenario-specific email flows.</p>
+      <div class="tags"><span>LLM Integration</span><span>Tool Use</span><span>C#</span><span>Prompt Design</span></div>
+    </div>
+    <div class="card reveal">
+      <div class="glyph">📄</div>
+      <h3>Self-Healing Document Import Pipeline</h3>
+      <p>Invoice/PDF ingestion feeding real customs declarations. Built <b>reference sanitization</b>, dumped-row protection, and a <b>learned-corrections system</b> that improves itself — while guarding against learning bad patterns.</p>
+      <div class="tags"><span>Data Pipeline</span><span>SQL Server</span><span>Cosmos DB</span><span>Heuristics</span></div>
+    </div>
+    <div class="card reveal">
+      <div class="glyph">⚡</div>
+      <h3>Platform-Wide UI Modernization</h3>
+      <p>Led the Angular modernization: <b>standalone components, signals, new control flow</b>, and a px→rem scaling migration across <b>100+ components</b> — pixel-perfect rendering at every zoom level, with a taxonomy of Material style leaks documented for the team.</p>
+      <div class="tags"><span>Angular</span><span>Signals</span><span>SCSS</span><span>Design Systems</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="sec-head reveal"><div class="idx">03 / ARSENAL</div><h2>Tools of the <em>trade</em></h2></div>
+  <div class="skill-rows">
+    <div class="skill-row reveal"><div class="cat">Languages</div><div class="chips"><span class="hot">C#</span><span class="hot">TypeScript</span><span>JavaScript (ES6+)</span><span>SQL</span><span>HTML5</span><span>CSS / SCSS</span></div></div>
+    <div class="skill-row reveal"><div class="cat">Backend</div><div class="chips"><span class="hot">.NET</span><span>ASP.NET Core Web API</span><span>Entity Framework</span><span>MediatR (CQRS)</span><span>Microservices</span><span>OAuth 2.0 / JWT</span><span>REST APIs</span><span>xUnit</span></div></div>
+    <div class="skill-row reveal"><div class="cat">Frontend</div><div class="chips"><span class="hot">Angular</span><span>Signals</span><span>RxJS</span><span>Angular Material</span><span>React</span><span>Reactive Forms</span></div></div>
+    <div class="skill-row reveal"><div class="cat">Data</div><div class="chips"><span>SQL Server</span><span>Azure Cosmos DB</span><span>Query Optimization</span></div></div>
+    <div class="skill-row reveal"><div class="cat">Cloud & DevOps</div><div class="chips"><span class="hot">Azure</span><span>App Service</span><span>Key Vault</span><span>Azure DevOps Pipelines</span><span>GitHub Actions</span><span>CI/CD</span><span>Monitoring</span></div></div>
+    <div class="skill-row reveal"><div class="cat">AI Engineering</div><div class="chips"><span class="hot">LLM Integration</span><span class="hot">Tool Use / Function Calling</span><span>Prompt Engineering</span><span>Claude Code</span><span>GitHub Copilot</span></div></div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="sec-head reveal"><div class="idx">04 / FOUNDATION</div><h2>Education &amp; <em>research</em></h2></div>
+  <div class="edu-grid">
+    <div class="card reveal">
+      <div class="glyph">🎓</div>
+      <h3>B.Tech, Computer Science</h3>
+      <p>Jaypee University of Information Technology · 2018 – 2022 · <b>80%</b></p>
+      <div class="tags"><span>Computer Science</span></div>
+    </div>
+    <div class="card reveal">
+      <div class="glyph">📚</div>
+      <h3>Published Research — ACM</h3>
+      <p><b>"Prediction of Breast Cancer Using Machine Learning Techniques"</b> — peer-reviewed conference paper published at IC3-2022 (ACM).</p>
+      <div class="tags"><span>Machine Learning</span><span>IC3-2022</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-box reveal">
+    <div class="idx mono" style="color:var(--accent3);font-size:.85rem;letter-spacing:.2em">05 / CONTACT</div>
+    <h2 style="margin-top:14px">Let's build something <em style="font-style:normal;background:linear-gradient(92deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent">great</em>.</h2>
+    <p>Open to senior full-stack roles — .NET / Angular / Azure, with a strong interest in AI-powered products. Remote-friendly, async-fluent, and comfortable owning things end-to-end.</p>
+    <a class="btn btn-primary" href="mailto:tarankitchadha520@gmail.com">tarankitchadha520@gmail.com</a>
+    <div class="contact-links">
+      <a class="clink" href="tel:+917018698426">📞 +91 70186 98426</a>
+      <a class="clink" href="https://www.linkedin.com/in/tarankit-chadha-09b6391ba/" target="_blank" rel="noopener">in/ LinkedIn</a>
+      <a class="clink" href="https://github.com/Tarankit" target="_blank" rel="noopener">⌥ GitHub</a>
+      <a class="clink" href="Tarankit_Chadha_Resume.pdf" target="_blank" rel="noopener">↓ Résumé PDF</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>Designed &amp; engineered by <b>Tarankit Chadha</b> · Built with three.js · © <span id="yr"></span></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ── three.js particle wave ── */
+(function(){
+  const canvas = document.getElementById('bg');
+  if (!window.THREE) { canvas.style.background = 'radial-gradient(ellipse at 50% 0%, #0d1430, #05070d)'; return; }
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true}); }
+  catch(e){ canvas.style.background = 'radial-gradient(ellipse at 50% 0%, #0d1430, #05070d)'; return; }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x05070d, 0.055);
+  const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+  camera.position.set(0, 2.6, 9);
+  camera.lookAt(0, 0, 0);
+
+  // wave grid of particles
+  const COLS = 130, ROWS = 60, SPACING = 0.42;
+  const count = COLS * ROWS;
+  const positions = new Float32Array(count * 3);
+  const colors = new Float32Array(count * 3);
+  const cA = new THREE.Color(0x5b8cff), cB = new THREE.Color(0x8f6fff), cC = new THREE.Color(0x39d4c3);
+  let i = 0;
+  for (let x = 0; x < COLS; x++) {
+    for (let z = 0; z < ROWS; z++) {
+      positions[i*3]   = (x - COLS/2) * SPACING;
+      positions[i*3+1] = 0;
+      positions[i*3+2] = (z - ROWS/2) * SPACING - 2;
+      i++;
+    }
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  const mat = new THREE.PointsMaterial({size:0.045, vertexColors:true, transparent:true, opacity:0.85, blending:THREE.AdditiveBlending, depthWrite:false});
+  const points = new THREE.Points(geo, mat);
+  scene.add(points);
+
+  // floating stars
+  const starGeo = new THREE.BufferGeometry();
+  const starN = 260;
+  const starPos = new Float32Array(starN * 3);
+  for (let s = 0; s < starN; s++) {
+    starPos[s*3]   = (Math.random()-0.5) * 46;
+    starPos[s*3+1] = Math.random() * 14 + 1;
+    starPos[s*3+2] = (Math.random()-0.5) * 34 - 4;
+  }
+  starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+  const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({size:0.05, color:0x9db4ff, transparent:true, opacity:0.6, blending:THREE.AdditiveBlending, depthWrite:false}));
+  scene.add(stars);
+
+  let mx = 0, my = 0, targetMx = 0, targetMy = 0, scrollY = 0;
+  window.addEventListener('mousemove', e => {
+    targetMx = (e.clientX / window.innerWidth - 0.5);
+    targetMy = (e.clientY / window.innerHeight - 0.5);
+  }, {passive:true});
+  window.addEventListener('scroll', () => { scrollY = window.scrollY; }, {passive:true});
+
+  function resize(){
+    const w = window.innerWidth, h = window.innerHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  const tmp = new THREE.Color();
+  let t = 0;
+  function tick(){
+    requestAnimationFrame(tick);
+    t += reduced ? 0 : 0.012;
+    mx += (targetMx - mx) * 0.04;
+    my += (targetMy - my) * 0.04;
+    const pos = geo.attributes.position.array;
+    const col = geo.attributes.color.array;
+    let k = 0;
+    for (let x = 0; x < COLS; x++) {
+      for (let z = 0; z < ROWS; z++) {
+        const px = pos[k*3], pz = pos[k*3+2];
+        const y = Math.sin(px * 0.55 + t) * 0.45
+                + Math.cos(pz * 0.45 + t * 0.8) * 0.45
+                + Math.sin((px + pz) * 0.22 + t * 0.6) * 0.3;
+        pos[k*3+1] = y;
+        const h = (y + 1.2) / 2.4;
+        if (h < 0.5) tmp.copy(cA).lerp(cC, h * 2); else tmp.copy(cC).lerp(cB, (h - 0.5) * 2);
+        col[k*3] = tmp.r; col[k*3+1] = tmp.g; col[k*3+2] = tmp.b;
+        k++;
+      }
+    }
+    geo.attributes.position.needsUpdate = true;
+    geo.attributes.color.needsUpdate = true;
+    stars.rotation.y = t * 0.014;
+    camera.position.x = mx * 1.6;
+    camera.position.y = 2.6 - my * 0.8 + Math.min(scrollY / 900, 1.4);
+    camera.lookAt(0, 0, 0);
+    renderer.render(scene, camera);
+  }
+  tick();
+})();
+
+/* ── loader ── */
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('done'), 500);
+});
+setTimeout(() => document.getElementById('loader').classList.add('done'), 3000); // safety
+
+/* ── scroll progress + nav ── */
+const nav = document.getElementById('nav');
+const progress = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.width = (window.scrollY / max * 100) + '%';
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, {passive:true});
+
+/* ── reveal on scroll ── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, {threshold: 0.12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ── stat counters ── */
+const cio = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target, end = +el.dataset.count, suf = el.dataset.suffix || '';
+    const dur = 1400, start = performance.now();
+    (function step(now){
+      const p = Math.min((now - start) / dur, 1);
+      el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))) + suf;
+      if (p < 1) requestAnimationFrame(step);
+    })(start);
+    cio.unobserve(el);
+  });
+}, {threshold: 0.6});
+document.querySelectorAll('.stat .num').forEach(el => cio.observe(el));
+
+/* ── card spotlight follows cursor ── */
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  }, {passive:true});
+});
+</script>
+</body>
+</html>
